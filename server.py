@@ -8,6 +8,9 @@ def emot_detection():
     text_to_analyse = request.args.get('textToAnalyze')
     response = emotion_detector(text_to_analyse)
 
+    if response['dominant_emotion'] == None:
+        return 'Invalid text! Please try again!'
+
     anger = response['anger']
     disgust = response['disgust']
     fear = response['fear']
